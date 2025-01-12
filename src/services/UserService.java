@@ -24,4 +24,15 @@ public class UserService {
                 .filter(Room::isAvailable)
                 .collect(Collectors.toList());
     }
+
+    // reverve a room
+    public boolean reserveRoom(int roomNumber) {
+        for (Room room : hotel.getRooms()) {
+            if (room.getRoomNumber() == roomNumber && room.isAvailable()) {
+                room.setAvailable(false);
+                return true;
+            }
+        }
+        return false;
+    }
 }
