@@ -35,4 +35,15 @@ public class UserService {
         }
         return false;
     }
+
+    // release a room
+    public boolean releaseRoom(int roomNumber) {
+        for (Room room : hotel.getRooms()) {
+            if (room.getRoomNumber() == roomNumber && !room.isAvailable()) {
+                room.setAvailable(true);
+                return true;
+            }
+        }
+        return false;
+    }
 }
