@@ -26,4 +26,16 @@ public class Guest {
         return dateOfBirth;
     }
 
+    // lista setterów
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setBirthDay(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 }
