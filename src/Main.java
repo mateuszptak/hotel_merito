@@ -41,6 +41,12 @@ public class Main {
                 case 4:
                     System.out.println("Podaj numer pokoju który chcesz zwolnić:");
                     int roomNumberToRelease = scanner.nextInt();
+                    if (userService.releaseRoom(roomNumberToRelease)) {
+                        System.out.println("Pokój numer " + roomNumberToRelease + " został zwolniony.");
+                    } else {
+                        System.out.println("Pokój numer " + roomNumberToRelease + " jest wolny.");
+                    }
+                    break;
                 case 5:
 
                 default:
