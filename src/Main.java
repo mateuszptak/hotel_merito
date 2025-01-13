@@ -39,7 +39,8 @@ public class Main {
                     }
                     break;
                 case 4:
-
+                    System.out.println("Podaj numer pokoju który chcesz zwolnić:");
+                    int roomNumberToRelease = scanner.nextInt();
                 case 5:
 
                 default:
