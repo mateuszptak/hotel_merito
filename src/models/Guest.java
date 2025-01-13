@@ -13,7 +13,7 @@ public class Guest {
         this.birthDay = birthDay;
     }
 
-    // Lista getterów
+    // getters list
     public String getFirstName(String firstName) {
         return firstName;
     }
@@ -26,7 +26,7 @@ public class Guest {
         return dateOfBirth;
     }
 
-    // lista setterów
+    // setters list
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
