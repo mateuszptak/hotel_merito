@@ -26,7 +26,8 @@ public class Main {
                             + " (status: " + (room.isAvailable() ? "wolny" : "zajęty") + ")"));
                     break;
                 case 2:
-
+                    userService.getAvailableRooms()
+                            .forEach(room -> System.out.println("Pokój " + room.getRoomNumber()));
                 case 3:
 
                 case 4:
