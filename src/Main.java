@@ -48,6 +48,8 @@ public class Main {
                     }
                     break;
                 case 5:
+                    System.out.println("Dziękujemy za korzystanie z naszego systemu.\nDo zobaczenia!");
+                    break;
 
                 default:
                     System.out.println("Nieprawidłowa opcja.");
