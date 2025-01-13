@@ -34,7 +34,10 @@ public class UserService {
             if (room.getRoomNumber() == roomNumber && room.isAvailable()) {
 
                 boolean isAdult = guests.stream()
-                        .anyMatch(guest -> Period.between(guest.getBirthDay(null), LocalDate.now()).getYears() >= 18);
+                        .anyMatch(guest -> Period.between(guest.getBirthDay
+                        // TODO: problem z przekazaniem daty urodzenia
+
+                        (null), LocalDate.now()).getYears() >= 18);
 
                 if (isAdult == false) {
                     System.out.println("Brak pełnoletniej osoby. Rezerwacja nie powiodła się.");
