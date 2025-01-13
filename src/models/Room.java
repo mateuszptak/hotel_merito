@@ -45,4 +45,12 @@ public class Room {
     public void removeGuest(Guest guest) {
         guests.remove(guest);
     }
+
+    public void addGuest(Guest guest) {
+        if (guests.size() <= capacity) {
+            guests.add(guest);
+        } else {
+            System.out.println("Pokój jest pełny.");
+        }
+    }
 }
