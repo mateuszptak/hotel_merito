@@ -5,12 +5,12 @@ import java.time.LocalDate;
 public class Guest {
     private String firstName;
     private String lastName;
-    private LocalDate dateOfBirth;
+    private LocalDate birthDay;
 
-    public Guest(String firstName, String lastName, LocalDate dateOfBirth) {
+    public Guest(String firstName, String lastName, LocalDate birthDay) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.birthDay = birthDay;
     }
 
     // Lista getterów
@@ -35,7 +35,7 @@ public class Guest {
         this.firstName = firstName;
     }
 
-    public void setBirthDay(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setBirthDay(LocalDate birthDay) {
+        this.birthDay = birthDay;
     }
 }
