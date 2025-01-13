@@ -26,6 +26,10 @@ public class Room {
         return capacity;
     }
 
+    public List<Guest> getGuestsList(Guest guest) {
+        return guests;
+    }
+
     public boolean hasBathroom() {
         return hasBathroom;
     }
@@ -37,4 +41,5 @@ public class Room {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
 }
