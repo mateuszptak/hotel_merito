@@ -42,4 +42,7 @@ public class Room {
         isAvailable = available;
     }
 
+    public void removeguest(Guest guest) {
+        guests.remove(guest);
+    }
 }
