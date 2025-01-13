@@ -37,6 +37,7 @@ public class Main {
                     } else {
                         System.out.println("Pokój numer " + roomNumberToReserve + " jest zajęty.");
                     }
+                    break;
                 case 4:
 
                 case 5:
