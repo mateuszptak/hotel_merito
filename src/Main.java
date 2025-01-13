@@ -30,7 +30,13 @@ public class Main {
                             .forEach(room -> System.out.println("Pokój " + room.getRoomNumber()));
                     break;
                 case 3:
-
+                    System.out.println("Podaj numer pokoju do rezerwacji: ");
+                    int roomNumberToReserve = scanner.nextInt();
+                    if (userService.reserveRoom(roomNumberToReserve)) {
+                        System.out.println("Pokój numer " + roomNumberToReserve + " został zarezerwowany.");
+                    } else {
+                        System.out.println("Pokój numer " + roomNumberToReserve + " jest zajęty.");
+                    }
                 case 4:
 
                 case 5:
