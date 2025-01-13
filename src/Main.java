@@ -28,6 +28,7 @@ public class Main {
                 case 2:
                     userService.getAvailableRooms()
                             .forEach(room -> System.out.println("Pokój " + room.getRoomNumber()));
+                    break;
                 case 3:
 
                 case 4:
