@@ -1,6 +1,10 @@
+import models.Guest;
 import models.Hotel;
 import services.UserService;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -30,12 +34,35 @@ public class Main {
                             .forEach(room -> System.out.println("Pokój " + room.getRoomNumber()));
                     break;
                 case 3:
-                    System.out.println("Podaj numer pokoju do rezerwacji: ");
+                    System.out.print("Podaj numer pokoju do rezerwacji: ");
                     int roomNumberToReserve = scanner.nextInt();
-                    if (userService.reserveRoom(roomNumberToReserve)) {
+                    scanner.nextLine();
+
+                    // list of guests
+                    List<Guest> guests = new ArrayList<>();
+
+                    // number of guests
+                    System.out.print("Podaj liczbę gości: ");
+                    int numberOfGuests = scanner.nextInt();
+                    scanner.nextLine();
+
+                    // loop to add new guests
+                    for (int i = 0; i < numberOfGuests; i++) {
+                        System.out.print("Podaj imię gościa: ");
+                        String firstName = scanner.nextLine();
+                        System.out.print("Podaj nazwisko gościa: ");
+                        String lastName = scanner.nextLine();
+                        System.out.print("Podaj datę urodzenia gościa (YYYY-MM-DD): ");
+                        LocalDate birthDay = LocalDate.parse(scanner.nextLine());
+                        guests.add(new Guest(firstName, lastName, birthDay));
+                    }
+
+                    // room reservation
+                    if (userService.reserveRoom(roomNumberToReserve, guests)) {
                         System.out.println("Pokój numer " + roomNumberToReserve + " został zarezerwowany.");
                     } else {
-                        System.out.println("Pokój numer " + roomNumberToReserve + " jest zajęty.");
+                        System.out.println(
+                                "Pokój numer " + roomNumberToReserve + " jest zajęty lub brak pełnoletniego gościa.");
                     }
                     break;
                 case 4:
