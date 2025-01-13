@@ -47,7 +47,7 @@ public class Room {
     }
 
     public void addGuest(Guest guest) {
-        if (guests.size() <= capacity) {
+        if (guests.size() < capacity) {
             guests.add(guest);
         } else {
             System.out.println("Pokój jest pełny.");

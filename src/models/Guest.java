@@ -22,8 +22,8 @@ public class Guest {
         return lastName;
     }
 
-    public LocalDate getDateOfBirth(LocalDate dateOfBirth) {
-        return dateOfBirth;
+    public LocalDate getBirthDay(LocalDate birthDay) {
+        return birthDay;
     }
 
     // setters list
