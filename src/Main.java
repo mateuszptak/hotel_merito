@@ -19,6 +19,24 @@ public class Main {
             System.out.println("5. Zakończ");
             System.out.print("Wybierz opcję: ");
             choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    userService.getAllRooms().forEach(room -> System.out.println("Pokój " + room.getRoomNumber()
+                            + " (status: " + (room.isAvailable() ? "wolny" : "zajęty") + ")"));
+                    break;
+                case 2:
+
+                case 3:
+
+                case 4:
+
+                case 5:
+
+                default:
+                    System.out.println("Nieprawidłowa opcja.");
+            }
+
         } while (choice != 5);
 
         scanner.close();
