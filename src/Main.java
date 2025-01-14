@@ -4,6 +4,7 @@ import services.UserService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,19 +34,36 @@ public class Main {
                     userService.getAvailableRooms()
                             .forEach(room -> System.out.println("Pokój " + room.getRoomNumber()));
                     break;
+
                 case 3:
-                    System.out.print("Podaj numer pokoju do rezerwacji: ");
-                    int roomNumberToReserve = scanner.nextInt();
-                    scanner.nextLine();
+                    int roomNumberToReserve;
+                    while (true) {
+                        try {
+                            System.out.print("Podaj numer pokoju do rezerwacji: ");
+                            roomNumberToReserve = scanner.nextInt();
+                            scanner.nextLine();
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Proszę wprowadzić poprawny numer pokoju.");
+                            scanner.next(); // Clear the invalid input
+                        }
+                    }
 
                     // list of guests
                     List<Guest> guests = new ArrayList<>();
-
-                    // number of guests
-                    System.out.print("Podaj liczbę gości: ");
-                    int numberOfGuests = scanner.nextInt();
-                    scanner.nextLine();
-
+                    int numberOfGuests;
+                    // Add exception handling for invalid input
+                    while (true) {
+                        try {
+                            System.out.print("Podaj liczbę gości: ");
+                            numberOfGuests = scanner.nextInt();
+                            scanner.nextLine();
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Proszę wprowadzić poprawną liczbę gości.");
+                            scanner.next();
+                        }
+                    }
                     // loop to add new guests
                     for (int i = 0; i < numberOfGuests; i++) {
                         System.out.print("Podaj imię gościa: ");
@@ -57,7 +75,6 @@ public class Main {
                         guests.add(new Guest(firstName, lastName, birthDay));
                     }
 
-                    // room reservation
                     if (userService.reserveRoom(roomNumberToReserve, guests)) {
                         System.out.println("Pokój numer " + roomNumberToReserve + " został zarezerwowany.");
                     } else {
@@ -65,6 +82,7 @@ public class Main {
                                 "Pokój numer " + roomNumberToReserve + " jest zajęty lub brak pełnoletniego gościa.");
                     }
                     break;
+
                 case 4:
                     System.out.println("Podaj numer pokoju który chcesz zwolnić:");
                     int roomNumberToRelease = scanner.nextInt();
