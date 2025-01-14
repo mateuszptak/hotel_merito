@@ -68,10 +68,15 @@ public class Main {
                     // exception handling for invalid input
                     while (true) {
                         try {
-                            System.out.print("Podaj liczbę gości: ");
+                            System.out.print("Podaj liczbę gości (maksymalnie 4): ");
                             numberOfGuests = scanner.nextInt();
                             scanner.nextLine();
-                            break;
+                            if (numberOfGuests > 4) {
+                                System.out.println(
+                                        "Maksymalna liczba gości w pokoju to 4. Proszę wprowadzić poprawną liczbę.");
+                            } else {
+                                break;
+                            }
                         } catch (InputMismatchException e) {
                             System.out.println("Proszę wprowadzić poprawną liczbę gości.");
                             scanner.next();
