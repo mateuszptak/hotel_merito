@@ -24,7 +24,17 @@ public class Main {
             System.out.println("4. Zwolnij pokój");
             System.out.println("5. Zakończ");
             System.out.print("Wybierz opcję: ");
-            choice = scanner.nextInt();
+
+            // add exception handling for invalid input
+            while (true) {
+                try {
+                    choice = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Proszę wprowadzić poprawny numer opcji.");
+                    scanner.next();
+                }
+            }
 
             switch (choice) {
                 case 1:
