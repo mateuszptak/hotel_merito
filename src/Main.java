@@ -3,6 +3,7 @@ import models.Hotel;
 import services.UserService;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -70,8 +71,17 @@ public class Main {
                         String firstName = scanner.nextLine();
                         System.out.print("Podaj nazwisko gościa: ");
                         String lastName = scanner.nextLine();
-                        System.out.print("Podaj datę urodzenia gościa (YYYY-MM-DD): ");
-                        LocalDate birthDay = LocalDate.parse(scanner.nextLine());
+                        LocalDate birthDay;
+                        while (true) {
+                            try {
+                                System.out.print("Podaj datę urodzenia gościa (YYYY-MM-DD): ");
+                                birthDay = LocalDate.parse(scanner.nextLine());
+                                break;
+                                // Add exception handling for date format
+                            } catch (DateTimeParseException e) {
+                                System.out.println("Proszę wprowadzić datę w formacie YYYY-MM-DD.");
+                            }
+                        }
                         guests.add(new Guest(firstName, lastName, birthDay));
                     }
 
