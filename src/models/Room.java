@@ -8,6 +8,7 @@ public class Room {
     private int capacity;
     private boolean hasBathroom;
     private boolean isAvailable;
+    private boolean isClean;
     private List<Guest> guests;
 
     public Room(int roomNumber, int capacity, boolean hasBathroom, boolean isAvailable) {
@@ -15,6 +16,7 @@ public class Room {
         this.capacity = capacity;
         this.hasBathroom = hasBathroom;
         this.isAvailable = isAvailable;
+        this.isClean = true;
         this.guests = new ArrayList<>();
     }
 
@@ -30,12 +32,20 @@ public class Room {
         return guests;
     }
 
+    public boolean isClean() {
+        return isClean;
+    }
+
     public boolean hasBathroom() {
         return hasBathroom;
     }
 
     public boolean isAvailable() {
         return isAvailable;
+    }
+
+    public void setClean(boolean clean) {
+        isClean = clean;
     }
 
     public void setAvailable(boolean available) {
