@@ -48,6 +48,8 @@ public class Main {
 
                 case 3:
                     int roomNumberToReserve;
+
+                    // exception handling for invalid input
                     while (true) {
                         try {
                             System.out.print("Podaj numer pokoju do rezerwacji: ");
@@ -56,14 +58,14 @@ public class Main {
                             break;
                         } catch (InputMismatchException e) {
                             System.out.println("Proszę wprowadzić poprawny numer pokoju.");
-                            scanner.next(); // Clear the invalid input
+                            scanner.next();
                         }
                     }
 
                     // list of guests
                     List<Guest> guests = new ArrayList<>();
                     int numberOfGuests;
-                    // Add exception handling for invalid input
+                    // exception handling for invalid input
                     while (true) {
                         try {
                             System.out.print("Podaj liczbę gości: ");
@@ -83,11 +85,11 @@ public class Main {
                         String lastName = scanner.nextLine();
                         LocalDate birthDay;
                         while (true) {
+                            // exception handling for invalid date format
                             try {
                                 System.out.print("Podaj datę urodzenia gościa (YYYY-MM-DD): ");
                                 birthDay = LocalDate.parse(scanner.nextLine());
                                 break;
-                                // Add exception handling for date format
                             } catch (DateTimeParseException e) {
                                 System.out.println("Proszę wprowadzić datę w formacie YYYY-MM-DD.");
                             }
@@ -95,11 +97,17 @@ public class Main {
                         guests.add(new Guest(firstName, lastName, birthDay));
                     }
 
-                    if (userService.reserveRoom(roomNumberToReserve, guests)) {
-                        System.out.println("Pokój numer " + roomNumberToReserve + " został zarezerwowany.");
-                    } else {
-                        System.out.println(
-                                "Pokój numer " + roomNumberToReserve + " jest zajęty lub brak pełnoletniego gościa.");
+                    // exception handling for reserveRoom method
+
+                    try {
+                        if (userService.reserveRoom(roomNumberToReserve, guests)) {
+                            System.out.println("Pokój numer " + roomNumberToReserve + " został zarezerwowany.");
+                        } else {
+                            System.out.println("Pokój numer " + roomNumberToReserve
+                                    + " jest zajęty lub brak pełnoletniego gościa.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Wystąpił błąd podczas rezerwacji pokoju: " + e.getMessage());
                     }
                     break;
 
