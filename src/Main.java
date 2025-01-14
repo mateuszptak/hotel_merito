@@ -112,12 +112,30 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("Podaj numer pokoju który chcesz zwolnić:");
-                    int roomNumberToRelease = scanner.nextInt();
-                    if (userService.releaseRoom(roomNumberToRelease)) {
-                        System.out.println("Pokój numer " + roomNumberToRelease + " został zwolniony.");
-                    } else {
-                        System.out.println("Pokój numer " + roomNumberToRelease + " jest wolny.");
+                    int roomNumberToRelease;
+
+                    // exception handling for invalid input
+                    while (true) {
+                        try {
+                            System.out.print("Podaj numer pokoju który chcesz zwolnić: ");
+                            roomNumberToRelease = scanner.nextInt();
+                            scanner.nextLine(); // Consume newline
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Proszę wprowadzić poprawny numer pokoju.");
+                            scanner.next(); // Clear the invalid input
+                        }
+                    }
+
+                    // exception handling for releaseRoom method
+                    try {
+                        if (userService.releaseRoom(roomNumberToRelease)) {
+                            System.out.println("Pokój numer " + roomNumberToRelease + " został zwolniony.");
+                        } else {
+                            System.out.println("Pokój numer " + roomNumberToRelease + " jest wolny.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Wystąpił błąd podczas zwalniania pokoju: " + e.getMessage());
                     }
                     break;
                 case 5:
