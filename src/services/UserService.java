@@ -32,22 +32,18 @@ public class UserService {
     public boolean reserveRoom(int roomNumber, List<Guest> guests) {
         for (Room room : hotel.getRooms()) {
             if (room.getRoomNumber() == roomNumber && room.isAvailable()) {
+                boolean hasAdult = guests.stream()
+                        .anyMatch(guest -> Period.between(guest.getBirthDay(), LocalDate.now())
+                                .getYears() >= 18);
 
-                boolean isAdult = guests.stream()
-                        .anyMatch(guest -> Period.between(guest.getBirthDay
-                        // TODO: problem z przekazaniem daty urodzenia
-
-                        (null), LocalDate.now()).getYears() >= 18);
-
-                if (isAdult == false) {
-                    System.out.println("Brak pełnoletniej osoby. Rezerwacja nie powiodła się.");
+                if (!hasAdult) {
+                    System.out.println("Przynajmniej jeden gość musi być pełnoletni.");
                     return false;
                 }
 
                 for (Guest guest : guests) {
                     room.addGuest(guest);
                 }
-
                 room.setAvailable(false);
                 return true;
             }

@@ -14,15 +14,15 @@ public class Guest {
     }
 
     // getters list
-    public String getFirstName(String firstName) {
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName(String lastName) {
+    public String getLastName() {
         return lastName;
     }
 
-    public LocalDate getBirthDay(LocalDate birthDay) {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
