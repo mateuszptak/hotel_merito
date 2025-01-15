@@ -8,7 +8,7 @@ public class Hotel {
 
     public Hotel() {
         rooms = new ArrayList<>();
-        for (int i = 1; i <= 69; i++) {
+        for (int i = 1; i <= 3; i++) {
             rooms.add(new Room(i, 2, true, true));
         }
     }
