@@ -45,6 +45,7 @@ public class UserService {
                     room.addGuest(guest);
                 }
                 room.setAvailable(false);
+                room.isClean(false);
                 return true;
             }
         }
@@ -61,4 +62,15 @@ public class UserService {
         }
         return false;
     }
+
+    // display all dirty rooms
+    public void displayAllDirtyRooms() {
+        for (Room room : hotel.getRooms()) {
+            if (room.isClean(false)) {
+                System.out.println(room);
+            }
+            System.out.println(room);
+        }
+    }
+
 }

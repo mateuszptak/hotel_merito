@@ -9,6 +9,7 @@ public class Room {
     private boolean hasBathroom;
     private boolean isAvailable;
     private List<Guest> guests;
+    private boolean isClean;
 
     public Room(int roomNumber, int capacity, boolean hasBathroom, boolean isAvailable) {
         this.roomNumber = roomNumber;
@@ -16,6 +17,7 @@ public class Room {
         this.hasBathroom = hasBathroom;
         this.isAvailable = isAvailable;
         this.guests = new ArrayList<>();
+        this.isClean = true;
     }
 
     public int getRoomNumber() {
@@ -52,5 +54,14 @@ public class Room {
         } else {
             System.out.println("Pokój jest pełny.");
         }
+    }
+
+    public boolean isClean(boolean isClean) {
+        return isClean;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokój " + roomNumber + " " + "(Status: " + (isClean ? "Posprzątany" : "Brudny") + ")";
     }
 }
