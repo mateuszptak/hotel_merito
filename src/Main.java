@@ -26,7 +26,8 @@ public class Main {
             System.out.println("4. Zwolnij pokój");
             System.out.println("5. Wyświetl pokoje do posprzątania");
             System.out.println("6. Posprzątaj pokój");
-            System.out.println("7. Zakończ");
+            System.out.println("7. Wyświetl listę zajętych pokoi wraz z datą opuszczenia.");
+            System.out.println("8. Zakończ");
             System.out.print("Wybierz opcję: ");
 
             // add exception handling for invalid input
@@ -194,6 +195,9 @@ public class Main {
                     hotelService.cleanRoom(roomNumberToClean);
                     break;
                 case 7:
+                    userService.displayOccupiedRoomsWithLeavingDate();
+                    break;
+                case 8:
                     System.out.println("Dziękujemy za korzystanie z naszego systemu.\nDo zobaczenia!");
                     break;
 
@@ -201,7 +205,7 @@ public class Main {
                     System.out.println("Nieprawidłowa opcja.");
             }
 
-        } while (choice != 7);
+        } while (choice != 8);
 
         scanner.close();
     }
