@@ -45,7 +45,7 @@ public class UserService {
                     room.addGuest(guest);
                 }
                 room.setAvailable(false);
-                room.isClean(false);
+                room.isClean();
                 return true;
             }
         }
@@ -57,6 +57,7 @@ public class UserService {
         for (Room room : hotel.getRooms()) {
             if (room.getRoomNumber() == roomNumber && !room.isAvailable()) {
                 room.setAvailable(true);
+                room.setClean(false);
                 return true;
             }
         }
@@ -66,7 +67,7 @@ public class UserService {
     // display all dirty rooms
     public void displayAllDirtyRooms() {
         List<Room> dirtyRooms = hotel.getRooms().stream()
-                .filter(room -> !room.isClean(true))
+                .filter(room -> !room.isClean())
                 .collect(Collectors.toList());
         if (dirtyRooms.isEmpty()) {
             System.out.println("Brak brudnych pokoi.");

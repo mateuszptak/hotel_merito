@@ -56,8 +56,12 @@ public class Room {
         }
     }
 
-    public boolean isClean(boolean isClean) {
+    public boolean isClean() {
         return isClean;
+    }
+
+    public void setClean(boolean clean) {
+        isClean = clean;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class HotelService {
     public void cleanRoom(int roomNumber) {
         for (Room room : hotel.getRooms()) {
             if (room.getRoomNumber() == roomNumber && !room.isAvailable()) {
-                room.isClean(true);
+                room.isClean();
                 System.out.println("Pokój nr " + roomNumber + " został posprzątany.");
             }
         }
