@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class Room {
     private int roomNumber;
@@ -10,6 +11,8 @@ public class Room {
     private boolean isAvailable;
     private List<Guest> guests;
     private boolean isClean;
+    private Date checkInDate;
+    private Date checkOutDate;
 
     public Room(int roomNumber, int capacity, boolean hasBathroom, boolean isAvailable) {
         this.roomNumber = roomNumber;
@@ -62,6 +65,22 @@ public class Room {
 
     public void setClean(boolean clean) {
         isClean = clean;
+    }
+
+    public Date getCheckInDate() {
+        return checkInDate;
+    }
+
+    public Date getCheckOutDate() {
+        return checkOutDate;
+    }
+
+    public void setCheckInDate(Date checkInDate) {
+        this.checkInDate = checkInDate;
+    }
+
+    public void setCheckOutDate(Date checkOutDate) {
+        this.checkOutDate = checkOutDate;
     }
 
     @Override
