@@ -4,9 +4,12 @@ import models.Guest;
 import models.Hotel;
 import models.Room;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class UserService {
@@ -46,6 +49,15 @@ public class UserService {
                 }
                 room.setAvailable(false);
                 room.isClean();
+
+                // random date leave room
+                Random random = new Random();
+                int stayDuration = random.nextInt(3) + 1;
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(new Date(stayDuration));
+                calendar.add(Calendar.DAY_OF_YEAR, stayDuration);
+                room.setCheckOutDate(calendar.getTime());
+
                 return true;
             }
         }
