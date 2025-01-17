@@ -76,4 +76,17 @@ public class UserService {
         }
     }
 
+    public void displayOccupiedRoomsWithLeavingDate() {
+        List<Room> occupiedRooms = hotel.getRooms().stream()
+                .filter(room -> !room.isAvailable())
+                .collect(Collectors.toList());
+        if (occupiedRooms.isEmpty()) {
+            System.out.println("Brak zajętych pokoi.");
+        } else {
+            occupiedRooms.forEach(room -> {
+                System.out.println("Pokój numer " + room.getRoomNumber() + " jest zajęty do " + room.getCheckOutDate());
+            });
+        }
+    }
+
 }
