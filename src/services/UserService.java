@@ -65,11 +65,13 @@ public class UserService {
 
     // display all dirty rooms
     public void displayAllDirtyRooms() {
-        for (Room room : hotel.getRooms()) {
-            if (room.isClean(false)) {
-                System.out.println(room);
-            }
-            System.out.println(room);
+        List<Room> dirtyRooms = hotel.getRooms().stream()
+                .filter(room -> !room.isClean(true))
+                .collect(Collectors.toList());
+        if (dirtyRooms.isEmpty()) {
+            System.out.println("Brak brudnych pokoi.");
+        } else {
+            dirtyRooms.forEach(System.out::println);
         }
     }
 
